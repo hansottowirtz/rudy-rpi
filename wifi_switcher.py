@@ -16,10 +16,10 @@ class WifiSwitcher:
 		GPIO.setmode(GPIO.BCM)
 		GPIO.setup(SWITCH_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 		self.prev_value = None
-		if 'alive (running)' in os.popen('systemctl status wpa_supplicant').read():
+		if 'active (running)' in os.popen('systemctl status wpa_supplicant').read():
 			print('WiFi mode already is client')
 			self.prev_value = 1
-		elif 'alive (running)' in os.popen('systemctl status hostapd').read():
+		elif 'active (running)' in os.popen('systemctl status hostapd').read():
 			print('WiFi mode already is AP')
 			self.prev_value = 0
 		self.update()

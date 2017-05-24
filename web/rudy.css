@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+}
+
+*:not(code) {
+  font-family: sans-serif;
+}
+
+header {
+  background-color: #0F3B5F;
+}
+
+img {
+  display: block;
+}
+
+main {
+  width: 100%;
+}
+
+.buttons-container {
+  height: 300px;
+  width: 300px;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 20px;
+}
+
+li {
+  float: center;
+	position: relative;
+	left: 590px;
+}
+
+.logo {
+	width: 300px;
+}
+
+.button {
+  width: 50px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.row {
+  padding: 10px 0;
+  font-size: 0;
+}
+
+.button-container {
+  width: 100px;
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  outline: none;
+}
+
+.arrow {
+  height: 75px;
+  width: auto;
+}
+
+.form-container {
+  margin-top: 50px;
+}
+
+.speed-row {
+  margin-top: 20px;
+}
+
+.speed-button {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  border: 0;
+  background-color: lightgrey;
+}

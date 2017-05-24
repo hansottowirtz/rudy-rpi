@@ -3,11 +3,61 @@
   <head>
     <meta charset="utf-8">
     <title>Rudy</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <script src="/web/rudy.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/web/rudy.css">
   </head>
   <body>
-    <h1>Rudy</h1>
-    <input type="text" name="command" value="B100">
-    <button type="button" name="command-button">Send</button>
+    <header>
+      <img src="/web/assets/logo.png" class="logo">
+    </header>
+    <main>
+      <div class="buttons-container">
+        <div class="row top-row">
+          <button class="button-container">
+            <img src="/web/assets/park-left.png" id="pleft" class="pleft button">
+          </button>
+          <button class="button-container">
+            <img src="/web/assets/arrow-up.png" id="up" class="up arrow button">
+          </button>
+          <button class="button-container">
+            <img src="/web/assets/park-right.png" id="pright" class="pright button">
+          </button>
+        </div>
+        <div class="row middle-row">
+          <button class="button-container">
+            <img src="/web/assets/arrow-left.png" id="left" class="left arrow button">
+          </button>
+          <button class="button-container">
+            <img src="/web/assets/stop.png" id="center" class="stop arrow button">
+          </button>
+          <button class="button-container">
+            <img src="/web/assets/arrow-right.png" id="right" class="right arrow button">
+          </button>
+        </div>
+        <div class="row bottom-row">
+          <button class="button-container"></button>
+          <button class="button-container">
+            <img src="/web/assets/arrow-down.png" id="down" class="down arrow button">
+          </button>
+          <button class="button-container">
+            <img src="/web/assets/brake.png" id="brake" class="brake button">
+          </button>
+        </div>
+        <div class="speed-row">
+          <span>Speed</span>
+          <code id="speed-indicator">100</code>
+          <button id="speed-button-plus" class="speed-button">+</button>
+          <button id="speed-button-minus" class="speed-button">-</button>
+        </div>
+
+        <div class="form-container">
+          <form class="" action="javascript:void(0);" method="post">
+            <input type="text" id="command" value="B100">
+            <button type="submit" id="command-button">Send</button>
+          </form>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

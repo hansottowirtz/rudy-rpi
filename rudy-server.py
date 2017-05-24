@@ -1,27 +1,36 @@
 #!/usr/bin/env python
 
 import zmq
-import flask
-app = flask.Flask(__name__, static_url_path='')
+from flask import Flask, request, send_from_directory
+from distutils.dir_util import mkpath
+app = Flask(__name__, static_url_path='')
 
-context = zmq.Context.instance()
+context = zmq.Context()
+socket = context.socket(zmq.PUB)
+mkpath('/tmp/rudy')
+socket.bind("ipc:///tmp/rudy/0")
 
-sock = context.socket(zmq.REQ)
-sock.bind('tcp://*:1337')
-
-@app.route("/", methods = ['GET'])
+@app.route('/', methods = ['GET'])
 def root():
-	return flask.send_from_directory('web', 'index.html')
+	return send_from_directory('web', 'index.html')
 
 @app.route('/web/<path:path>', methods = ['GET'])
 def static_file(path):
-    return flask.send_from_directory('web', path)
+    return send_from_directory('web', path)
 
 @app.route("/api/command", methods = ['PUT'])
 def command():
-	sock.send(flask.request.get_json()['command'].encode('utf-8'))
-	sock.recv()
+	c = request.get_json()['command'].encode('utf-8')
+	print 'sending'
+	socket.send('command ' + c)
+	print 'sent'
+	print c
+	return ('', 204)
+
+@app.route("/api/park", methods = ['PUT'])
+def park():
+	socket.send('park left')
 	return ('', 204)
 
 if __name__ == "__main__":
-	app.run(port=80)
+	app.run(host='0.0.0.0', port=80, debug=True)
